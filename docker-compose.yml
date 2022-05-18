@@ -1,0 +1,22 @@
+version: '3.9'
+services:
+  database:
+    image: mysql:8.0.28
+    container_name: bside_mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bside
+      - MYSQL_USER=bside
+      - MYSQL_PASSWORD=bside
+    volumes:
+      - "./docker/mysql-init-files/:/docker-entrypoint-initdb.d/"
+      - "./docker/mysql-data:/var/lib/mysql"
+    ports:
+      - "3306:3306"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+      - bside
+networks:
+  bside:
+    name: bsideNetwork
+    driver: bridge
