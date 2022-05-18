@@ -1,0 +1,36 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// NOTE: 게시글을 생성할 수 있는 유저 테이블
+// User.id ------< Post.userId
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  createdAt DateTime  @db.Date()
+  deletedAt DateTime? @db.Date()
+
+  posts Post[]
+}
+
+// NOTE: 유저가 작성하는 게시글 테이블
+// Post.userId >------ User.id
+model Post {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  title     String
+  content   String
+  createdAt DateTime  @db.DateTime(0)
+  updatedAt DateTime? @db.DateTime(0)
+  deletedAt DateTime? @db.Date()
+
+  User User @relation(fields: [userId], references: [id])
+}
