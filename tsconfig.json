@@ -16,6 +16,10 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    /* 추가된 설정 */
+	"strict": true, // 엄격한 타입 체크
+  "noUnusedParameters": true, // 사용되지 않은 파라미터 오류 출력
+  "noUncheckedIndexedAccess": true // 객체 유형이 명확하게 선언되지않았을 경우 undefined 타입을 추가합니다 
   }
 }
