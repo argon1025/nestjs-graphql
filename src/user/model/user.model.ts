@@ -10,12 +10,11 @@ export class UserModel {
 
   email: User['email'];
 
-  @Field({ nullable: true })
   createdAt: User['createdAt'];
 
   @HideField()
   password: User['password'];
 
   @HideField()
-  deletedAt: User['deletedAt'];
+  deletedAt?: User['deletedAt'];
 }
