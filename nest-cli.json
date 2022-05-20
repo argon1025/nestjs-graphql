@@ -3,9 +3,10 @@
   "sourceRoot": "src",
   "plugins": [
     {
-      "name": "@nestjs/graphql/plugin",
+      "name": "@nestjs/graphql",
       "options": {
-        "typeFileNameSuffix": [".model.ts"]
+        "typeFileNameSuffix": [".model.ts"],
+        "introspectComments": true
       }
     }
   ]
